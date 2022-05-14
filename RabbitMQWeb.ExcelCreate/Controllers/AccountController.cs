@@ -24,9 +24,23 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string Email, string Password)
+        public async Task<IActionResult> Login(string Email, string Password)
         {
-            return View();
+            var hasUser = await _userManager.FindByEmailAsync(Email);
+
+            if (hasUser == null)
+            {
+                return View();
+            }
+            var signInResult = await _signInManager.PasswordSignInAsync(hasUser, Password, true, false);
+
+            if (!signInResult.Succeeded)
+            {
+                return View();
+            }
+
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }
