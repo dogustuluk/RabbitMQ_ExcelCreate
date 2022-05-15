@@ -8,7 +8,7 @@ namespace RabbitMQWeb.ExcelCreate.Models
 {
     public enum FileStatus
     {
-        Created,
+        Creating,
         Completed
     }
     public class UserFile
