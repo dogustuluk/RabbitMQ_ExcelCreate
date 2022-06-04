@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RabbitMQWeb.ExcelCreate.Models;
+using RabbitMQWeb.ExcelCreate.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,13 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
     {
         private readonly AppDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RabbitMQPublisher _rabbitMQPublisher;
 
-        public ProductController(AppDbContext context, UserManager<IdentityUser> userManager)
+        public ProductController(AppDbContext context, UserManager<IdentityUser> userManager, RabbitMQPublisher rabbitMQPublisher)
         {
             _context = context;
             _userManager = userManager;
+            _rabbitMQPublisher = rabbitMQPublisher;
         }
         public IActionResult Index()
         {
@@ -43,6 +46,10 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
 
             await _context.SaveChangesAsync();
 
+            //rabbitMQ mesaj gönderme başlangıcı>>>>
+            _rabbitMQPublisher.Publish(new Shared.CreateExcelMessage() { FileId = userFile.Id, UserId = userFile.UserId});
+                        //userFile Id'sini userFile'da tanımlamadık ama EF Core veritabanına kaydettiği için memory'deki ilgili alanın Id propety'sini kendisi otomatik olarak dolduruyor.
+            //<<<<rabbitMQ mesaj gönderme sonu
             TempData["StartCreatingExcel"] = true; //bir request'ten diğer bir request'e data taşımak için ViewBag kullanılmaz, TempData kullanılır.
                 //ViewBag aynı request'e, model tarafına datayı taşımamıza izin verir.
                 //TempData >>> requestler arasında data paylaşımını ilgili datayı cookie'de tutarak yapmaktadır.
