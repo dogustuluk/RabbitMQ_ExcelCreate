@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQWeb.ExcelCreate", "RabbitMQWeb.ExcelCreate\RabbitMQWeb.ExcelCreate.csproj", "{8E9ECFCB-B48D-4F38-937E-1C83ADB0E8A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{03AE759A-F539-4C6B-91DF-BCEFEC13E02A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{03AE759A-F539-4C6B-91DF-BCEFEC13E02A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCreateWorkerService", "FileCreateWorkerService\FileCreateWorkerService.csproj", "{7AC91BA7-F173-41F3-AC34-581ED3E65E75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{03AE759A-F539-4C6B-91DF-BCEFEC13E02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03AE759A-F539-4C6B-91DF-BCEFEC13E02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03AE759A-F539-4C6B-91DF-BCEFEC13E02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC91BA7-F173-41F3-AC34-581ED3E65E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC91BA7-F173-41F3-AC34-581ED3E65E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC91BA7-F173-41F3-AC34-581ED3E65E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC91BA7-F173-41F3-AC34-581ED3E65E75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
