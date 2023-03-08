@@ -47,7 +47,7 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
             await _context.SaveChangesAsync();
 
             //rabbitMQ mesaj gönderme başlangıcı>>>>
-            _rabbitMQPublisher.Publish(new Shared.CreateExcelMessage() { FileId = userFile.Id, UserId = userFile.UserId});
+            _rabbitMQPublisher.Publish(new Shared.CreateExcelMessage() { FileId = userFile.Id});
                         //userFile Id'sini userFile'da tanımlamadık ama EF Core veritabanına kaydettiği için memory'deki ilgili alanın Id propety'sini kendisi otomatik olarak dolduruyor.
             //<<<<rabbitMQ mesaj gönderme sonu
             TempData["StartCreatingExcel"] = true; //bir request'ten diğer bir request'e data taşımak için ViewBag kullanılmaz, TempData kullanılır.

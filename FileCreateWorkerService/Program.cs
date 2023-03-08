@@ -24,7 +24,7 @@ namespace FileCreateWorkerService
                 .ConfigureServices((hostContext, services) =>
                 {
                     IConfiguration Configuration = hostContext.Configuration;
-                    //sql server
+                    //sql server. scope olarak ekledik.
                     services.AddDbContext<AdventureWorks2019Context>(opt =>
                     {
                         opt.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
